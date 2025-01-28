@@ -1,0 +1,113 @@
+@import url("https://fonts.googleapis.com/css2?family=Oranienbaum&family=Rock+Salt&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Corben:wght@400;700&display=swap");
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.menuBar {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 10px 5px 10px;
+  background-color: #140906;
+  font-family: "Rock Salt", serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 20px;
+  align-items: center;
+  position: relative;
+}
+.banner {
+  object-fit: cover;
+  width: 100vw;
+  position: relative;
+}
+
+.bannerElem {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 20%;
+  right: 30%;
+  align-items: center;
+}
+.bannerText,
+.bannerCaption {
+  font-family: "Corben", serif;
+  font-weight: 400;
+  font-style: normal;
+
+  -webkit-font-smoothing: antialiased;
+  text-shadow: 2px 2px #140906;
+  color: #ffffff;
+}
+.bannerText {
+  font-size: 38px;
+}
+
+.bannerCaption {
+  font-size: 20px;
+  margin-top: 0;
+}
+.bannerBtn {
+  width: 50%;
+  appearance: none;
+  background-color: #ffffff;
+  border-width: 0;
+  box-sizing: border-box;
+  color: #000000;
+  cursor: pointer;
+  display: inline-block;
+  font-family: Clarkson, Helvetica, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0;
+  line-height: 1em;
+  margin: 0;
+  opacity: 1;
+  outline: 0;
+  padding: 1.5em 2.2em;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  text-rendering: geometricprecision;
+  text-transform: uppercase;
+  transition: opacity 300ms cubic-bezier(0.694, 0, 0.335, 1),
+    background-color 100ms cubic-bezier(0.694, 0, 0.335, 1),
+    color 100ms cubic-bezier(0.694, 0, 0.335, 1);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: baseline;
+  white-space: nowrap;
+}
+
+.bannerBtn:before {
+  animation: opacityFallbackOut 0.5s step-end forwards;
+  backface-visibility: hidden;
+  background-color: #ebebeb;
+  clip-path: polygon(-1% 0, 0 0, -25% 100%, -1% 100%);
+  content: "";
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  transform: translateZ(0);
+  transition: clip-path 0.5s cubic-bezier(0.165, 0.84, 0.44, 1),
+    -webkit-clip-path 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+  width: 100%;
+}
+
+.bannerBtn:hover:before {
+  animation: opacityFallbackIn 0s step-start forwards;
+  clip-path: polygon(0 0, 101% 0, 101% 101%, 0 101%);
+}
+
+.bannerBtn:after {
+  background-color: #ffffff;
+}
+
+.bannerBtn span {
+  z-index: 1;
+  position: relative;
+}
