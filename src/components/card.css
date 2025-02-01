@@ -1,0 +1,70 @@
+.productCardWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  justify-content: center;
+  align-items: center;
+}
+
+.productOutline {
+  width: 95%;
+  height: 500px;
+  background: rgb(246, 245, 245);
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
+    rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+  position: relative;
+  overflow: hidden; /* This ensures the image doesn't spill out */
+}
+
+.cardImage {
+  width: 100%;
+  height: 100%;
+}
+
+.product-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* This makes the image cover the container while maintaining aspect ratio */
+  object-position: center; /* Centers the image */
+}
+
+.productInfo {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  /* gap: 2px; */
+}
+
+.productName {
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+.productDetails {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin: 0;
+}
+
+.productFlavor {
+  font-size: 0.9rem;
+  color: #666;
+  margin: 0;
+}
+
+.productRegion {
+  font-size: 0.9rem;
+  color: #666;
+  margin: 0;
+}
+
+.productRoast {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.Price {
+  font-weight: bold;
+  font-size: 1.2rem;
+}

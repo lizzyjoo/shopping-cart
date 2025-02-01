@@ -1,6 +1,7 @@
 import beanVideo from "./assets/coffee_beans_video.mp4";
 import "./video.css";
 import "./home.css";
+import "./components/NavBar.css";
 import { Link } from "react-router-dom";
 import Menu from "./components/Nav";
 
