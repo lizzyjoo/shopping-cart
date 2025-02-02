@@ -68,3 +68,22 @@
   font-weight: bold;
   font-size: 1.2rem;
 }
+
+.cart-button {
+  position: absolute;
+  bottom: 20px;
+  left: 20%;
+  transform: translateX(-50%);
+  padding: 8px 16px;
+  background-color: #140906(97, 20, 20);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.cart-button:hover {
+  background-color: #f0f0f0;
+  color: #140906;
+  border: solid;
+}

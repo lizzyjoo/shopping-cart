@@ -10,6 +10,7 @@ export default function Shop() {
   const [products, setProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [cartItems, setCartItems] = useState([]); // Add cart state
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -31,6 +32,48 @@ export default function Shop() {
     fetchProducts();
   }, []);
 
+  const addToCart = (product) => {
+    setCartItems((prevItems) => {
+      // Check if product already exists in cart
+      const existingItem = prevItems.find((item) => item.id === product.id);
+      if (existingItem) {
+        // If it exists, increment quantity
+        return prevItems.map((item) =>
+          item.id === product.id
+            ? { ...item, quantity: (item.quantity || 1) + 1 }
+            : item
+        );
+      }
+      // If it's new, add it with quantity 1
+      return [...prevItems, { ...product, quantity: 1 }];
+    });
+  };
+
+  const removeFromCart = (productId) => {
+    setCartItems((prevItems) =>
+      prevItems.filter((item) => item.id !== productId)
+    );
+  };
+
+  const updateQuantity = (productId, newQuantity) => {
+    if (newQuantity < 1) {
+      removeFromCart(productId);
+      return;
+    }
+
+    setCartItems((prevItems) =>
+      prevItems.map((item) =>
+        item.id === productId ? { ...item, quantity: newQuantity } : item
+      )
+    );
+  };
+
+  const calculateTotal = () => {
+    return cartItems
+      .reduce((total, item) => total + item.price * (item.quantity || 1), 0)
+      .toFixed(2);
+  };
+
   if (isLoading) {
     return <div>Is Loading...</div>;
   }
@@ -41,7 +84,12 @@ export default function Shop() {
 
   return (
     <div className="shop-container">
-      <Menu />
+      <Menu
+        cartItems={cartItems}
+        onRemoveItem={removeFromCart}
+        onUpdateQuantity={updateQuantity}
+        cartTotal={calculateTotal()}
+      />
       <div className="shop-main">
         <div className="shopOptions">
           <div className="shopTitle">ALL COFFEE</div>
@@ -53,14 +101,8 @@ export default function Shop() {
           {products.map((product) => (
             <ProductCard
               key={product.id}
-              name={product.name}
-              description={product.description}
-              price={product.price}
-              region={product.region}
-              weight={product.weight}
-              roast_level={product.roast_level}
-              flavor_profile={product.flavor_profile}
-              image_url={product.image_url}
+              {...product}
+              onAddToCart={() => addToCart(product)}
             />
           ))}
         </div>
