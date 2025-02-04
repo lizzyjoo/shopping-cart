@@ -8,12 +8,12 @@ import "./assets/FilterIcon.css";
 import FilterIcon from "./assets/Filter";
 import ProductCard from "./components/ProductCard";
 
-// manage all products via useState, product info fetched once upon mounting
 export default function Shop() {
   const [products, setProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [cartItems, setCartItems] = useState([]); // Add cart state
+  const [cartItems, setCartItems] = useState([]);
+  const [sortType, setSortType] = useState("Featured");
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -35,19 +35,35 @@ export default function Shop() {
     fetchProducts();
   }, []);
 
+  const handleSort = (type) => {
+    setSortType(type);
+  };
+
+  const getSortedProducts = (products, sortType) => {
+    switch (sortType) {
+      case "ALPHABETICALLY, A-Z":
+        return [...products].sort((a, b) => a.name.localeCompare(b.name));
+      case "ALPHABETICALLY, Z-A":
+        return [...products].sort((a, b) => b.name.localeCompare(a.name));
+      case "PRICE, LOW TO HIGH":
+        return [...products].sort((a, b) => a.price - b.price);
+      case "PRICE, HIGH TO LOW":
+        return [...products].sort((a, b) => b.price - a.price);
+      default: // "Featured"
+        return products;
+    }
+  };
+
   const addToCart = (product) => {
     setCartItems((prevItems) => {
-      // Check if product already exists in cart
       const existingItem = prevItems.find((item) => item.id === product.id);
       if (existingItem) {
-        // If it exists, increment quantity
         return prevItems.map((item) =>
           item.id === product.id
             ? { ...item, quantity: (item.quantity || 1) + 1 }
             : item
         );
       }
-      // If it's new, add it with quantity 1
       return [...prevItems, { ...product, quantity: 1 }];
     });
   };
@@ -82,7 +98,7 @@ export default function Shop() {
   }
 
   if (error) {
-    return <div>Error Looading products</div>;
+    return <div>Error Loading products</div>;
   }
 
   return (
@@ -105,11 +121,28 @@ export default function Shop() {
             </button>
           </div>
           <div className="shopRight">
-            <button className="sortBtn">SORT BY: </button>
+            <div className="sort-dropdown">
+              <button className="sortBtn">SORT BY: {sortType}</button>
+              <div className="sort-options">
+                <button onClick={() => handleSort("Featured")}>Featured</button>
+                <button onClick={() => handleSort("ALPHABETICALLY, A-Z")}>
+                  ALPHABETICALLY, A-Z
+                </button>
+                <button onClick={() => handleSort("ALPHABETICALLY, Z-A")}>
+                  ALPHABETICALLY, Z-A
+                </button>
+                <button onClick={() => handleSort("PRICE, LOW TO HIGH")}>
+                  PRICE, LOW TO HIGH
+                </button>
+                <button onClick={() => handleSort("PRICE, HIGH TO LOW")}>
+                  PRICE, HIGH TO LOW
+                </button>
+              </div>
+            </div>
           </div>
         </div>
         <div className="productGrid">
-          {products.map((product) => (
+          {getSortedProducts(products, sortType).map((product) => (
             <ProductCard
               key={product.id}
               {...product}

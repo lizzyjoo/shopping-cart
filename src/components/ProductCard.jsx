@@ -18,6 +18,11 @@ export default function ProductCards({
     ? flavor_profile.join(" · ")
     : flavor_profile;
 
+  const getRoastLevelDisplay = (level) => {
+    const filledCircles = "●".repeat(level);
+    const emptyCircles = "○".repeat(5 - level);
+    return filledCircles + emptyCircles;
+  };
   return (
     <div className="productCardWrapper">
       <div
@@ -36,7 +41,10 @@ export default function ProductCards({
         <p className="productName">{name}</p>
         <p className="productFlavor">{formattedFlavors}</p>
         <p className="productRegion">{region}</p>
-        <div className="productRoast">{roast_level}</div>
+        <div className="productRoast">
+          Roast Level:{" "}
+          <span id="roastIcon">{getRoastLevelDisplay(roast_level)}</span>
+        </div>
         <p className="Price">${price}</p>
       </div>
     </div>

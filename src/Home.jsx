@@ -47,12 +47,13 @@ export default function Home() {
         </div>
 
         <section>
+          <p className="sectionHeading">Our Story</p>
           <img
             className="section1"
             src={section1}
             alt="section 1" // Always include alt text for accessibility
           />
-          <p className="sectionHeading">Lorem Ipsum</p>
+          {/* <p className="sectionHeading">Lorem Ipsum</p> */}
           <p className="sectionBody">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
@@ -62,6 +63,16 @@ export default function Home() {
             pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
             culpa qui officia deserunt mollit anim id est laborum.
           </p>
+        </section>
+
+        <section className="section2">
+          <div className="quoteDiv">
+            &quot;Eu curabitur quisque; feugiat pharetra vehicula lacinia eros.
+            Porta volutpat aliquet ridiculus ad fames himenaeos sociosqu.&quot;
+            <p className="sectionBody" id="quoteText">
+              –Coffee Times
+            </p>
+          </div>
         </section>
       </div>
     </div>

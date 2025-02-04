@@ -13,9 +13,10 @@
 .main {
   display: flex;
   flex-direction: column;
-  gap: 140px;
+  gap: 100px;
   width: 100%;
-  background-color: #140906;
+  background: #140906;
+  padding-bottom: 80px;
 }
 
 section {
@@ -23,7 +24,6 @@ section {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: #140906;
 }
 
 section p {
@@ -33,6 +33,7 @@ section p {
 
 .sectionHeading {
   font-size: 30px;
+  text-align: center;
 }
 
 .sectionBody {
@@ -42,6 +43,23 @@ section p {
   width: 70%;
   height: 60%;
   object-fit: cover;
+}
+
+.quoteDiv {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  background-color: #f5eee9;
+  padding: 30px 40px;
+  border-radius: 4px;
+  height: 200px;
+  width: 70%;
+  font-size: 40px;
+  text-align: left;
+}
+
+#quoteText {
+  color: #140906;
 }
 
 .banner {
