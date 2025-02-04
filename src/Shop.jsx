@@ -13,7 +13,7 @@ export default function Shop() {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
   const [cartItems, setCartItems] = useState([]);
-  const [sortType, setSortType] = useState("Featured");
+  const [sortType, setSortType] = useState("FEATURED");
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -49,7 +49,8 @@ export default function Shop() {
         return [...products].sort((a, b) => a.price - b.price);
       case "PRICE, HIGH TO LOW":
         return [...products].sort((a, b) => b.price - a.price);
-      default: // "Featured"
+      default:
+        "Featured";
         return products;
     }
   };
@@ -124,7 +125,7 @@ export default function Shop() {
             <div className="sort-dropdown">
               <button className="sortBtn">SORT BY: {sortType}</button>
               <div className="sort-options">
-                <button onClick={() => handleSort("Featured")}>Featured</button>
+                <button onClick={() => handleSort("FEATURED")}>FEATURED</button>
                 <button onClick={() => handleSort("ALPHABETICALLY, A-Z")}>
                   ALPHABETICALLY, A-Z
                 </button>

@@ -1,4 +1,5 @@
 import "./CartSidebar.css";
+import { useEffect } from "react";
 
 export default function CartSideBar({
   isOpen,
@@ -8,6 +9,22 @@ export default function CartSideBar({
   onUpdateQuantity,
   cartTotal,
 }) {
+  useEffect(() => {
+    if (isOpen) {
+      document.body.classList.add("sidebar-open");
+    } else {
+      document.body.classList.remove("sidebar-open");
+    }
+
+    // Cleanup when component unmounts
+    return () => {
+      document.body.classList.remove("sidebar-open");
+    };
+  }, [isOpen]);
+
+  // Return null if not open (no change here)
+  if (!isOpen) return null;
+
   return isOpen ? (
     <>
       <div className="cart-overlay" onClick={() => setIsOpen(false)} />
