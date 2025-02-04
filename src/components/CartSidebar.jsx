@@ -1,4 +1,5 @@
 import "./CartSidebar.css";
+import PropTypes from "prop-types";
 import { useEffect } from "react";
 
 export default function CartSideBar({
@@ -92,3 +93,12 @@ export default function CartSideBar({
     </>
   ) : null;
 }
+
+CartSideBar.propTypes = {
+  isOpen: PropTypes.bool.isRequired,
+  setIsOpen: PropTypes.func.isRequired,
+  cartItems: PropTypes.array.isRequired,
+  onRemoveItem: PropTypes.func.isRequired,
+  onUpdateQuantity: PropTypes.func.isRequired,
+  cartTotal: PropTypes.number.isRequired,
+};

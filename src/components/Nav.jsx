@@ -1,9 +1,7 @@
 import { useState } from "react";
 import CartIcon from "../assets/CartIcon.jsx";
 import CartSideBar from "./CartSidebar.jsx";
-import Logo from "../assets/Logo.jsx";
 import "./nav.css";
-import CartCircle from "../assets/CartCircle.jsx";
 import "../assets/CartCircle.css";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";

@@ -1,6 +1,9 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import "./card.css";
 import PropTypes from "prop-types";
+
+// update needed:
+// 1. implement page for each product
 
 export default function ProductCards({
   name,
@@ -14,6 +17,8 @@ export default function ProductCards({
   onAddToCart,
 }) {
   const [showButton, setShowButton] = useState(false);
+  const [showDescription, setShowDescription] = useState(false);
+
   const formattedFlavors = Array.isArray(flavor_profile)
     ? flavor_profile.join(" · ")
     : flavor_profile;
@@ -26,11 +31,28 @@ export default function ProductCards({
   return (
     <div className="productCardWrapper">
       <div
-        onMouseEnter={() => setShowButton(true)}
-        onMouseLeave={() => setShowButton(false)}
+        onMouseEnter={() => {
+          setShowButton(true);
+          setShowDescription(true);
+        }}
+        onMouseLeave={() => {
+          setShowButton(false);
+          setShowDescription(false);
+        }}
         className="productOutline"
       >
         <img src={image_url} alt={name} className="product-image" />
+        {showDescription && (
+          <div className="product-description-overlay">
+            <div className="description-content">
+              <h3>Product Details</h3>
+              <p>{description}</p>
+              <p>
+                <strong>Weight:</strong> {weight}g
+              </p>
+            </div>
+          </div>
+        )}
         {showButton && (
           <button className="cart-button" onClick={onAddToCart}>
             Add to Cart
@@ -55,6 +77,11 @@ ProductCards.propTypes = {
   name: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
   onAddToCart: PropTypes.func.isRequired,
+  image_url: PropTypes.string.isRequired,
+  region: PropTypes.string.isRequired,
+  price: PropTypes.number.isRequired,
+  weight: PropTypes.number.isRequired,
+  roast_level: PropTypes.number.isRequired,
   flavor_profile: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.arrayOf(PropTypes.string),
