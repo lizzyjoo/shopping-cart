@@ -1,8 +1,8 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Home from "./home";
-import Shop from "./shop";
+import Home from "./Home";
+import Shop from "./Shop";
 import ErrorPage from "./errorPage";
 import "./index.css";
 
