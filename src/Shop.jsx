@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import Menu from "./components/Nav";
+import Header from "./components/LogoHeader";
 import "./components/card.css";
-import "./components/NavBar.css";
+import "./components/nav.css";
 import "./shop.css";
 import "./assets/FilterIcon.css";
 import FilterIcon from "./assets/Filter";
@@ -86,6 +87,7 @@ export default function Shop() {
 
   return (
     <div className="shop-container">
+      <Header />
       <Menu
         cartItems={cartItems}
         onRemoveItem={removeFromCart}

@@ -1,11 +1,12 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import CartIcon from "../assets/CartIcon.jsx";
 import CartSideBar from "./CartSidebar.jsx";
 import Logo from "../assets/Logo.jsx";
-import "../assets/nav.css";
+import "./nav.css";
 import CartCircle from "../assets/CartCircle.jsx";
 import "../assets/CartCircle.css";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 
 export default function Nav({
   cartItems = [], // Default empty array
@@ -33,18 +34,12 @@ export default function Nav({
             <button id="shop">Shop</button>
           </Link>
         </div>
-        <div className="logoDiv">
-          <Logo className="logo" />
-        </div>
+
         <div className="cartDiv">
           <button id="cart" onClick={toggleCart}>
             <div className="cart-icon-container">
               <CartIcon className="cartIcon" />
-              {cartItemCount > 0 && (
-                <div className="cart-circle-wrapper">
-                  <CartCircle />
-                </div>
-              )}
+              <p className="itemCount">{cartItemCount}</p>
             </div>
           </button>
         </div>
@@ -60,3 +55,10 @@ export default function Nav({
     </>
   );
 }
+
+Nav.propTypes = {
+  cartItems: PropTypes.array.isRequired,
+  onRemoveItem: PropTypes.func.isRequired,
+  onUpdateQuantity: PropTypes.func.isRequired,
+  cartTotal: PropTypes.number.isRequired,
+};

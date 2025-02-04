@@ -11,7 +11,7 @@
 
 .cart-sidebar {
   position: fixed;
-  top: 0;
+  top: 5%;
   right: 0;
   width: 400px;
   height: 100vh;
