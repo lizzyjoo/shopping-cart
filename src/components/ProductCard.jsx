@@ -37,7 +37,7 @@ export default function ProductCards({
         <p className="productFlavor">{formattedFlavors}</p>
         <p className="productRegion">{region}</p>
         <div className="productRoast">{roast_level}</div>
-        <p className="Price">{price}</p>
+        <p className="Price">${price}</p>
       </div>
     </div>
   );

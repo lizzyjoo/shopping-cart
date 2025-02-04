@@ -3,6 +3,8 @@ import CartIcon from "../assets/CartIcon.jsx";
 import CartSideBar from "./CartSidebar.jsx";
 import Logo from "../assets/Logo.jsx";
 import "../assets/nav.css";
+import CartCircle from "../assets/CartCircle.jsx";
+import "../assets/CartCircle.css";
 import { Link } from "react-router-dom";
 
 export default function Nav({
@@ -36,8 +38,14 @@ export default function Nav({
         </div>
         <div className="cartDiv">
           <button id="cart" onClick={toggleCart}>
-            <CartIcon className="cartIcon" />
-            <p>{cartItemCount}</p>
+            <div className="cart-icon-container">
+              <CartIcon className="cartIcon" />
+              {cartItemCount > 0 && (
+                <div className="cart-circle-wrapper">
+                  <CartCircle />
+                </div>
+              )}
+            </div>
           </button>
         </div>
       </div>

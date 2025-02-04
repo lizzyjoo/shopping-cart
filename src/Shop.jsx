@@ -3,6 +3,8 @@ import Menu from "./components/Nav";
 import "./components/card.css";
 import "./components/NavBar.css";
 import "./shop.css";
+import "./assets/FilterIcon.css";
+import FilterIcon from "./assets/Filter";
 import ProductCard from "./components/ProductCard";
 
 // manage all products via useState, product info fetched once upon mounting
@@ -92,10 +94,17 @@ export default function Shop() {
       />
       <div className="shop-main">
         <div className="shopOptions">
-          <div className="shopTitle">ALL COFFEE</div>
-          <p className="productCount">{products.length} products</p>
-          <button className="filterBtn">FILTERS</button>
-          <button className="sortBtn">SORT BY: </button>
+          <div className="shopLeft">
+            <div className="shopTitle">ALL COFFEE</div>
+            <p className="productCount">{products.length} products</p>
+            <button className="filterBtn">
+              <FilterIcon />
+              FILTERS
+            </button>
+          </div>
+          <div className="shopRight">
+            <button className="sortBtn">SORT BY: </button>
+          </div>
         </div>
         <div className="productGrid">
           {products.map((product) => (

@@ -1,3 +1,10 @@
+@import url("https://fonts.googleapis.com/css2?family=Chau+Philomene+One:ital@0;1&display=swap");
+
+body {
+  font-family: "Chau Philomene One", serif;
+  font-weight: 400;
+  font-style: normal;
+}
 #root {
   display: flex;
   justify-content: center;
@@ -24,26 +31,122 @@
 
 .shopOptions {
   display: flex;
-  align-items: center;
+  align-items: end;
+  justify-content: space-between;
   gap: 20px;
   margin-bottom: 30px;
   width: 100%;
+  padding: 10px;
 }
 
+.shopLeft {
+  font-family: "Chau Philomene One", serif;
+  font-weight: 400;
+  font-style: normal;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.shopRight {
+  display: flex;
+  flex-direction: column;
+
+  padding-right: 40px;
+}
 .shopTitle {
-  font-size: 24px;
+  font-size: 28px;
   font-weight: bold;
 }
 
+.productName {
+  font-size: 26px;
+}
+
+.productFlavor,
+.productRegion {
+  font-size: 16px;
+}
 .productCount {
   color: #666;
+  margin-top: 0;
 }
 
 .productGrid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 14px;
+
   width: 100%;
+}
+
+.filterBtn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  justify-content: center;
+  background-color: #ffffff;
+  border: 1px solid #222222;
+  border-radius: 4px;
+  width: 120px;
+  box-sizing: border-box;
+  color: #222222;
+  cursor: pointer;
+  font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto,
+    "Helvetica Neue", sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 20px;
+  margin: 0;
+  outline: none;
+  padding: 6px 4px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  touch-action: manipulation;
+  transition: box-shadow 0.2s, -ms-transform 0.1s, -webkit-transform 0.1s,
+    transform 0.1s;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.filterBtn:focus-visible {
+  box-shadow: #222222 0 0 0 2px, rgba(255, 255, 255, 0.8) 0 0 0 4px;
+  transition: box-shadow 0.2s;
+}
+
+.filterBtn:active {
+  background-color: #f7f7f7;
+  border-color: #000000;
+  transform: scale(0.96);
+}
+
+.filterBtn:disabled {
+  border-color: #dddddd;
+  color: #dddddd;
+  cursor: not-allowed;
+  opacity: 1;
+}
+
+.sortBtn {
+  display: inline-block;
+  color: #222222;
+  box-sizing: border-box;
+  background-color: white;
+  cursor: pointer;
+  font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto,
+    "Helvetica Neue", sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+  margin: 0;
+  outline: none;
+  padding: 5px 12px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  touch-action: manipulation;
+  user-select: none;
+  -webkit-user-select: none;
+  width: auto;
 }
 
 @media (max-width: 1200px) {

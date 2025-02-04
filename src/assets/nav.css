@@ -24,3 +24,35 @@
   top: 15%;
   right: 50%;
 }
+
+.cart-icon-container {
+  display: flex;
+  align-items: baseline;
+}
+@import url("https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap");
+
+.menuBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px 10px;
+  background-color: #140906;
+  font-family: "Rock Salt", serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 20px;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: 1000;
+  box-sizing: border-box;
+}
+
+.page-content {
+  margin-top: 60px; /* Adjust this value based on your navbar height */
+  min-height: calc(100vh - 60px); /* Ensure pages fill the viewport */
+  width: 100%;
+}
